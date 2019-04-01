@@ -15,6 +15,7 @@ function install () {
     $dotfiles fetch
     $dotfiles reset origin/master
     $dotfiles stash
+    $dotfiles branch --set-upstream-to=origin/master master
 
     echo "> Installation completed !"
 }
