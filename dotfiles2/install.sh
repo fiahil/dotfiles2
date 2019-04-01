@@ -14,11 +14,9 @@ function install () {
     $dotfiles remote add origin "${REMOTE}"
     $dotfiles fetch
     $dotfiles reset origin/master
+    $dotfiles stash
 
     echo "> Installation completed !"
-    echo "> Files existing before:"
-
-    $dotfiles status
 }
 
 install
