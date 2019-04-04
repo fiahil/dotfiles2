@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/bin/zsh
+
+set -euo pipefail
 
 function install () {
     echo "> Installing dotfiles"
