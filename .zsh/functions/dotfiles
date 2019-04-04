@@ -18,8 +18,9 @@ dotfiles() {
     git init --bare "${dotdir}"
     ${=dotfiles} config status.showUntrackedFiles no
     ${=dotfiles} remote add origin "${remote}"
-    dotfiles update
+    ${=dotfiles} checkout -b master
     ${=dotfiles} branch --set-upstream-to=origin/master master
+    dotfiles update
     ;;
   *)
     ${=dotfiles} $@
