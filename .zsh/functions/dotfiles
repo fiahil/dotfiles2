@@ -1,0 +1,28 @@
+# dotfiles convenience function
+dotfiles() {
+  dotdir="${HOME}/.dotfiles"
+  remote="git@github.com:fiahil/dotfiles2.git"
+  dotfiles="git --git-dir=${dotdir} --work-tree=${HOME}"
+
+  case "$1" in
+  "reload"*)
+    exec $SHELL
+    ;;
+  "update"*)
+    ${=dotfiles} fetch
+    ${=dotfiles} reset origin/master
+    ${=dotfiles} stash
+    dotfiles reload
+    ;;
+  "init"*)
+    git init --bare "${dotdir}"
+    ${=dotfiles} config status.showUntrackedFiles no
+    ${=dotfiles} remote add origin "${REMOTE}"
+    ${=dotfiles} branch --set-upstream-to=origin/master master
+    dotfiles update
+    ;;
+  *)
+    ${=dotfiles} $@
+    ;;
+  esac
+}
