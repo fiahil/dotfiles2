@@ -2,21 +2,7 @@
 
 function install () {
     echo "> Installing dotfiles"
-
-    export DOTDIR="${HOME}/.dotfiles"
-    export REMOTE="git@github.com:fiahil/dotfiles2.git"
-
-    dotfiles="git --git-dir=${DOTDIR} --work-tree=${HOME}"
-
-    git init --bare "${DOTDIR}"
-
-    $dotfiles config status.showUntrackedFiles no
-    $dotfiles remote add origin "${REMOTE}"
-    $dotfiles fetch
-    $dotfiles reset origin/master
-    $dotfiles stash
-    $dotfiles branch --set-upstream-to=origin/master master
-
+    curl -fsSL https://raw.githubusercontent.com/fiahil/dotfiles2/master/.zsh/functions/dotfiles | xargs -I CMD bash -c "CMD ; dotfiles init"
     echo "> Installation completed !"
 }
 
