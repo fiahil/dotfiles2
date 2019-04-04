@@ -26,6 +26,3 @@ dotfiles() {
     ;;
   esac
 }
-
-# Complete dotfiles like git
-compdef dotfiles=git
