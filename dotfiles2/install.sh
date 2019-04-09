@@ -20,7 +20,10 @@ function install () {
     curl -fsSlo "$HOME/.antigen/antigen.zsh" --create-dirs \
         https://raw.githubusercontent.com/zsh-users/antigen/master/bin/antigen.zsh
 
-    echo "> Installation completed !"
+    [[ -f ~/.antigen/antigen.zsh ]] && source ~/.antigen/antigen.zsh
+    [[ -f ~/.antigenrc ]] && source ~/.antigenrc
+
+    echo "> Installation completed ! Relaunch your shell to apply configuration"
 }
 
 install
