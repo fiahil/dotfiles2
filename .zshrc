@@ -63,14 +63,18 @@ bindkey "^P" history-search-backward
 bindkey "^Y" accept-and-hold
 bindkey "^N" insert-last-word
 
+# antigen
+[[ -f ~/.antigen/antigen.zsh ]] && source ~/.antigen/antigen.zsh
+[[ -f ~/.antigenrc ]] && source ~/.antigenrc
+
 # dircolors
 [[ -f ~/.dircolors ]] && eval `dircolors ~/.dircolors`
 
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
 
-# Local config
-[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
-
 # iterm2
 [[ -f ~/.iterm2_shell_integration.zsh ]] && source ~/.iterm2_shell_integration.zsh
+
+# Local config
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
