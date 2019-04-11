@@ -63,6 +63,25 @@ bindkey "^P" history-search-backward
 bindkey "^Y" accept-and-hold
 bindkey "^N" insert-last-word
 
+# Powerlevel9k
+POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/bhilburn/powerlevel9k
+
+POWERLEVEL9K_MODE="nerdfont-complete"
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon user virtualenv dir_writable dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time root_indicator background_jobs time disk_usage ram)
+#POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )"
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX='\u2570\uf460 '
+#POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
+#POWERLEVEL9K_USER_ICON="\uF415" # 
+POWERLEVEL9K_ROOT_ICON="\uF09C"
+#POWERLEVEL9K_SUDO_ICON=$'\uF09C' # 
+POWERLEVEL9K_TIME_FORMAT="%D{%H:%M}"
+POWERLEVEL9K_VCS_GIT_ICON='\uF408 '
+POWERLEVEL9K_VCS_GIT_GITHUB_ICON='\uF408 '
+POWERLEVEL9K_COMMAND_EXECUTION_TIME_PRECISION=2
+POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=0
+
 # antigen
 [[ -f ~/.antigen/antigen.zsh ]] && source ~/.antigen/antigen.zsh
 [[ -f ~/.antigenrc ]] && source ~/.antigenrc
