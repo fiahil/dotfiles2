@@ -10,8 +10,14 @@ antigen bundle command-not-found
 # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting
 
+# History substring search
+antigen bundle zsh-users/zsh-history-substring-search
+
+# Autocomplete
+antigen bundle zsh-users/zsh-autosuggestions
+
 # Load the theme.
-antigen theme bhilburn/powerlevel9k powerlevel9k
+antigen theme romkatv/powerlevel10k powerlevel10k
 
 # Tell Antigen that you're done.
 antigen apply

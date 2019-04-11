@@ -64,7 +64,7 @@ bindkey "^Y" accept-and-hold
 bindkey "^N" insert-last-word
 
 # Powerlevel9k
-POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/bhilburn/powerlevel9k
+POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/romkatv/powerlevel10k
 
 POWERLEVEL9K_MODE="nerdfont-complete"
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
@@ -97,3 +97,9 @@ POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=0
 
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
+# Plugin keybindings
+bindkey '\eOA' history-substring-search-up
+bindkey '\eOB' history-substring-search-down
+bindkey '^[^[' autosuggest-accept
+bindkey '^[^M' autosuggest-execute
