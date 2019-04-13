@@ -12,7 +12,7 @@ alias path='echo $PATH | tr -s ":" "\n"'
 # Shortcuts
 alias ll="ls -al"
 alias ln="ln -v"
-alias ls='ls -G'
+alias ls='ls -G --color=auto'
 alias la='ll -a'
 alias 'cd..'='cd ..'
 alias ne='vim'
