@@ -1,5 +1,4 @@
 export SHELL=/bin/zsh
-export HOME=/Users/qleffray
 export TERM="xterm-256color"
 export ARCHFLAGS="-arch x86_64"
 
