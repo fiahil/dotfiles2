@@ -1,0 +1,5 @@
+vpn() {
+  env=$1
+
+  op get totp VPN-$env | pbcopy && osascript -e "tell application \"/Applications/Tunnelblick.app\"" -e "connect \"$env\"" -e "end tell"
+}
