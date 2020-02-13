@@ -112,6 +112,9 @@ POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=0
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
+# Source.ai config
+[[ -f ~/.zshrc.sourceai ]] && source ~/.zshrc.sourceai
+
 # Plugin keybindings
 bindkey '\eOA' history-substring-search-up
 bindkey '\eOB' history-substring-search-down

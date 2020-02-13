@@ -25,10 +25,10 @@ export PATH="/usr/local/git/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
-export PATH="$HOME/anaconda3/bin/:$PATH"
 export PATH="/Applications/Postgres.app/Contents/Versions/10/bin:$PATH"
 
 export GOPATH="$HOME/go"
+export GOROOT="/usr/local/opt/go/libexec"
 
 # Local config
 [[ -f ~/.zshenv.local ]] && source ~/.zshenv.local
