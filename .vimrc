@@ -133,7 +133,10 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
 " Always use vertical diffs
-set diffopt+=vertical
+if &diff
+    set diffopt-=internal
+    set diffopt+=vertical
+endif
 
 " Remap NERDTree
 nnoremap <leader>n :NERDTreeToggle<CR>

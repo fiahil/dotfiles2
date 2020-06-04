@@ -45,3 +45,5 @@
   required = true
 [include]
   path = ~/.gitconfig.local
+[hub]
+	host = git.sourceai.io
