@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+set -euxo pipefail
+
 function install () {
     echo "> Installing dotfiles"
     curl -fsSL https://raw.githubusercontent.com/fiahil/dotfiles2/master/.zsh/functions/dotfiles \
