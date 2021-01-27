@@ -1,6 +1,6 @@
 [user]
-	name = Quentin Leffray
-	email = fiahil@gmail.com
+  name = Quentin Leffray
+  email = fiahil@gmail.com
 [push]
   default = current
 [pull]
@@ -40,11 +40,9 @@
   smudge = git hawser smudge %f
   required = true
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
   required = true
-	process = git-lfs filter-process
+  process = git-lfs filter-process
 [include]
   path = ~/.gitconfig.local
-[hub]
-	host = git.sourceai.io
