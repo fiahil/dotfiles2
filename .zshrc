@@ -74,27 +74,15 @@ pastefinish() {
   zle -N self-insert $OLD_SELF_INSERT
 }
 
+install_starship() {
+  curl -fsSL https://starship.rs/install.sh | bash -s -- -y
+  eval "$(starship init zsh)"
+}
+
 zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
 
-# Powerlevel9k
-POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/romkatv/powerlevel10k
-
-POWERLEVEL9K_MODE="nerdfont-complete"
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon user virtualenv dir_writable dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time root_indicator background_jobs time)
-#POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )"
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX='\u2570\uf460 '
-#POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
-#POWERLEVEL9K_USER_ICON="\uF415" # 
-POWERLEVEL9K_ROOT_ICON="\uF09C"
-#POWERLEVEL9K_SUDO_ICON=$'\uF09C' # 
-POWERLEVEL9K_TIME_FORMAT="%D{%H:%M}"
-POWERLEVEL9K_VCS_GIT_ICON='\uF408 '
-POWERLEVEL9K_VCS_GIT_GITHUB_ICON='\uF408 '
-POWERLEVEL9K_COMMAND_EXECUTION_TIME_PRECISION=2
-POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=0
+type starship > /dev/null && eval "$(starship init zsh)" || install_starship
 
 # antigen
 [[ -f ~/.antigen/antigen.zsh ]] && source ~/.antigen/antigen.zsh
@@ -117,5 +105,3 @@ bindkey '\eOA' history-substring-search-up
 bindkey '\eOB' history-substring-search-down
 bindkey '^[^[' autosuggest-accept
 bindkey '^[^M' autosuggest-execute
-
-eval "$(starship init zsh)"

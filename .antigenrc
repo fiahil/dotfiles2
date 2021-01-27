@@ -16,8 +16,5 @@ antigen bundle zsh-users/zsh-history-substring-search
 # Autocomplete
 antigen bundle zsh-users/zsh-autosuggestions
 
-# Load the theme.
-antigen theme romkatv/powerlevel10k powerlevel10k
-
 # Tell Antigen that you're done.
 antigen apply
