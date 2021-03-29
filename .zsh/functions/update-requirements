@@ -1,0 +1,4 @@
+
+update-requirements() {
+    pip install -U pip -r "$1" && pip freeze | grep -i "$(cat $1)" > $1
+}
