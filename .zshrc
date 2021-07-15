@@ -84,9 +84,9 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 
 type starship > /dev/null && eval "$(starship init zsh)" || install_starship
 
-# antigen
-[[ -f ~/.antigen/antigen.zsh ]] && source ~/.antigen/antigen.zsh
-[[ -f ~/.antigenrc ]] && source ~/.antigenrc
+# antibody
+source <(antibody init)
+antibody bundle < ~/.zshplugins
 
 # dircolors
 [[ -f ~/.dircolors ]] && eval `dircolors ~/.dircolors`

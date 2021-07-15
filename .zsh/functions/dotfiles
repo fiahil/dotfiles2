@@ -5,14 +5,9 @@ dotfiles() {
   dotfiles="git --git-dir=${dotdir} --work-tree=${HOME}"
 
   case "$1" in
-  "reload"*)
-    exec $SHELL
-    ;;
   "update"*)
     ${=dotfiles} fetch
     ${=dotfiles} reset origin/master
-    ${=dotfiles} stash
-    dotfiles reload
     ;;
   "init"*)
     rm -rf "${dotdir}"

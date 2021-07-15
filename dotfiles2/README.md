@@ -2,13 +2,14 @@
 
 ```sh
 function install () {
-    echo "> Installing dotfiles"
+    echo "> Installing antibody"
+    curl -fsSL git.io/antibody | sh -s - -b /usr/local/bin
+    source <(antibody init)
 
-    apt update && apt install -y curl vim zsh git
+    echo "> Installing dotfiles"
     eval "$(curl -fsSL https://raw.githubusercontent.com/fiahil/dotfiles2/master/.zsh/functions/dotfiles)"
 
     dotfiles init
-    dotfiles reload
 }
 
 install
