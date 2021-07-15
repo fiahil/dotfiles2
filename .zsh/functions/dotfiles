@@ -1,6 +1,6 @@
 # dotfiles convenience function
 dotfiles() {
-  dotdir="${HOME}/.dotfiles"
+  dotdir="${HOME}/dotfiles2/.dotfiles"
   remote="https://github.com/fiahil/dotfiles2.git"
   dotfiles="git --git-dir=${dotdir} --work-tree=${HOME}"
 
