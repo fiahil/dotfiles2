@@ -1,7 +1,7 @@
 # dotfiles convenience function
 dotfiles() {
   dotdir="${HOME}/.dotfiles"
-  remote="git@github.com:fiahil/dotfiles2.git"
+  remote="https://github.com/fiahil/dotfiles2.git"
   dotfiles="git --git-dir=${dotdir} --work-tree=${HOME}"
 
   case "$1" in
