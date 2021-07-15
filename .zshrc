@@ -36,6 +36,9 @@ SAVEHIST=65536
 DISABLE_AUTO_TITLE="true"
 HYPHEN_INSENSITIVE="false"
 COMPLETION_WAITING_DOTS="true"
+ZSH_CACHE_DIR=/tmp/zshcache
+
+mkdir -p /tmp/zshcache
 
 # awesome cd movements from zshkit
 setopt autocd autopushd pushdminus pushdsilent pushdtohome cdablevars
