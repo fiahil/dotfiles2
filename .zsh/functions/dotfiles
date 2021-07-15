@@ -7,7 +7,7 @@ dotfiles() {
   case "$1" in
   "update"*)
     ${=dotfiles} fetch
-    ${=dotfiles} reset origin/master
+    ${=dotfiles} reset --hard origin/master
     ;;
   "init"*)
     rm -rf "${dotdir}"
