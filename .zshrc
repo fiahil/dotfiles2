@@ -104,7 +104,7 @@ antibody bundle < ~/.zshplugins
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
 # Plugin keybindings
-bindkey '\eOA' history-substring-search-up
-bindkey '\eOB' history-substring-search-down
+bindkey '^[OA' history-substring-search-up
+bindkey '^[OB' history-substring-search-down
 bindkey '^[^[' autosuggest-accept
 bindkey '^[^M' autosuggest-execute
