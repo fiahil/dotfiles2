@@ -15,6 +15,7 @@ dotfiles() {
     dotfiles reload
     ;;
   "init"*)
+    rm -rf "${dotdir}"
     git init --bare "${dotdir}"
     ${=dotfiles} config status.showUntrackedFiles no
     ${=dotfiles} remote add origin "${remote}"

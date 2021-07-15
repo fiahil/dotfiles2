@@ -23,6 +23,8 @@
 [core]
   autocrlf = input
   editor = vim
+[init]
+  defaultBranch = main
 [commit]
   template = ~/.gitmessage
 [fetch]
@@ -46,5 +48,3 @@
   process = git-lfs filter-process
 [include]
   path = ~/.gitconfig.local
-[init]
-	defaultBranch = main

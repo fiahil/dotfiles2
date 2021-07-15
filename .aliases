@@ -12,8 +12,6 @@ alias path='echo $PATH | tr -s ":" "\n"'
 # Shortcuts
 alias ll="ls -al"
 alias ln="ln -v"
-[[ $(uname) == "Darwin" ]] && alias ls='ls -G'
-[[ $(uname) == "Linux"  ]] && alias ls='ls -G --color=auto'
 alias la='ll -a'
 alias 'cd..'='cd ..'
 alias ne='vim'
@@ -21,6 +19,15 @@ alias htop='htop -d 3'
 alias k='kubectl'
 alias cat='bat'
 alias pytest='python -m pytest'
+
+# platform-specific shortcuts
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    alias ls='ls -G'
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    alias ls='ls -G --color=auto'
+else
+    # Unknown.
+fi
 
 # Include custom aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
