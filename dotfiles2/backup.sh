@@ -38,4 +38,4 @@ restic --verbose backup        \
     --exclude "target"         \
     --exclude "data"           \
     --exclude "node_modules"   \
-    --files-from "$HOME/dotfiles2/dotfiles2/backup-files.txt"
+    --files-from "$HOME/dotfiles2/backup-files.txt"

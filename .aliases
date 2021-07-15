@@ -19,7 +19,7 @@ alias htop='htop -d 3'
 alias k='kubectl'
 alias cat='bat'
 alias pytest='python -m pytest'
-alias backup='$HOME/dotfiles2/dotfiles2/backup.sh'
+alias backup='$HOME/dotfiles2/backup.sh'
 
 # platform-specific shortcuts
 if [[ "$OSTYPE" == "darwin"* ]]; then
