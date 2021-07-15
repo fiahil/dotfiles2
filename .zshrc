@@ -75,7 +75,7 @@ pastefinish() {
 }
 
 install_starship() {
-  curl -fsSL https://starship.rs/install.sh | bash -s -- -y
+  sh -c "$(curl -fsSL https://starship.rs/install.sh)"
   eval "$(starship init zsh)"
 }
 
