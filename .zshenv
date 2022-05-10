@@ -35,5 +35,7 @@ fi
 export GOPATH="$HOME/go"
 export GOROOT="/usr/local/opt/go/libexec"
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Local config
 [[ -f ~/.zshenv.local ]] && source ~/.zshenv.local
