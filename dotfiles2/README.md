@@ -2,8 +2,8 @@
 
 ```sh
 function install () {
-    echo "> Installing antibody"
-    curl -fsSL git.io/antibody | sh -s - -b /usr/local/bin
+    echo "> Installing antigen"
+    curl -fsSL git.io/antigen | sh -s - -b /usr/local/bin
     source <(antibody init)
 
     echo "> Installing dotfiles"
