@@ -28,12 +28,11 @@ export PATH="/opt/homebrew/opt/python@3.10/bin:$PATH"
 # Mac-specific exports
 if [[ "$OSTYPE" == "darwin"* ]]; then
     export PATH="/Applications/Postgres.app/Contents/Versions/13/bin:$PATH"
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 export GOPATH="$HOME/go"
 export GOROOT="/usr/local/opt/go/libexec"
-
-eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Local config
 [[ -f ~/.zshenv.local ]] && source ~/.zshenv.local
