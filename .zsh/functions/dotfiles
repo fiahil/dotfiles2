@@ -15,7 +15,7 @@ dotfiles() {
     ${=dotfiles} config status.showUntrackedFiles no
     ${=dotfiles} remote add origin "${remote}"
     dotfiles update
-    ${=dotfiles} branch --set-upstream-to=origin/master master
+    ${=dotfiles} branch --set-upstream-to=origin/main main
     ;;
   *)
     ${=dotfiles} $@
