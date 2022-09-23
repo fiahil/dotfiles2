@@ -87,32 +87,11 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 
 type starship > /dev/null && eval "$(starship init zsh)" || install_starship
 
-# antigen
-source "$HOME/bin/antigen.zsh"
+# antidote
+source "$HOME/bin/antidote/antidote.zsh"
 
-# Load the oh-my-zsh's library.
-antigen use oh-my-zsh
-
-# Bundles from the default repo (robbyrussell's oh-my-zsh).
-antigen bundle git
-antigen bundle pip
-antigen bundle rust
-antigen bundle docker
-antigen bundle kubectl
-antigen bundle command-not-found
-
-# Autocomplete
-antigen bundle zsh-users/zsh-autosuggestions
-
-# Syntax highlighting bundle.
-antigen bundle zsh-users/zsh-syntax-highlighting
-
-# History substring search
-antigen bundle zsh-users/zsh-history-substring-search
-
-# Tell Antigen that you're done.
-antigen apply
-
+# initialize plugins statically with ~/.zsh_plugins.txt
+antidote load
 
 # dircolors
 [[ -f ~/.dircolors ]] && eval `dircolors ~/.dircolors`
