@@ -93,6 +93,14 @@ source "$HOME/bin/antidote/antidote.zsh"
 # initialize plugins statically with ~/.zsh_plugins.txt
 antidote load
 
+# Plugin keybindings
+bindkey '^[[A' history-substring-search-up
+bindkey '^[OA' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+bindkey '^[OB' history-substring-search-down
+bindkey '^[^[' autosuggest-accept
+bindkey '^[^M' autosuggest-execute
+
 # dircolors
 [[ -f ~/.dircolors ]] && eval `dircolors ~/.dircolors`
 
@@ -105,8 +113,3 @@ antidote load
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
-# Plugin keybindings
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-bindkey '^[^[' autosuggest-accept
-bindkey '^[^M' autosuggest-execute
