@@ -28,10 +28,13 @@ export PATH="/opt/homebrew/opt/python@3.10/bin:$PATH"
 if [[ "$OSTYPE" == "darwin"* ]]; then
     export PATH="/Applications/Postgres.app/Contents/Versions/13/bin:$PATH"
     eval "$(/opt/homebrew/bin/brew shellenv)"
+    export GOROOT="$(brew --prefix golang)/libexec"
+else
+    export GOROOT="/usr/local/opt/go/libexec"
 fi
 
 export GOPATH="$HOME/go"
-export GOROOT="/usr/local/opt/go/libexec"
+export GOBIN="$GOPATH/bin"
 
 # Local config
 [[ -f ~/.zshenv.local ]] && source ~/.zshenv.local
