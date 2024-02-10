@@ -7,12 +7,12 @@ echo "Starting backup"
 command -v restic > /dev/null 2>&1 || { echo >&2 "restic not installed. Aborting."; exit 1; }
 
 command -v op  > /dev/null 2>&1 && {
-    eval $(op signin trofray)
+    eval $(op signin)
 
-    export B2_ACCOUNT_ID=$(op get item "Backblaze B2 Backups" --fields B2_ACCOUNT_ID --format CSV)
-    export B2_ACCOUNT_KEY=$(op get item "Backblaze B2 Backups" --fields B2_ACCOUNT_KEY --format CSV)
+    export B2_ACCOUNT_ID=$(op item get "Backblaze B2 Backups" --fields B2_ACCOUNT_ID --format human-readable)
+    export B2_ACCOUNT_KEY=$(op item get "Backblaze B2 Backups" --fields B2_ACCOUNT_KEY --format human-readable)
 
-    export RESTIC_PASSWORD=$(op get item "Backblaze B2 Backups" --fields BACKUP_PASSWORD --format CSV)
+    export RESTIC_PASSWORD=$(op item get "Backblaze B2 Backups" --fields BACKUP_PASSWORD --format human-readable)
 }
 
 [[ -z "$B2_ACCOUNT_ID" ]] && { echo >&2 "B2_ACCOUNT_ID not set. Aborting."; exit 1; }
@@ -42,6 +42,7 @@ case $1 in
             --exclude ".venv"          \
             --exclude ".mypy_cache"    \
             --exclude ".pytest_cache"  \
+            --exclude "__pycache__"    \
             --exclude ".cache"         \
             --exclude "target"         \
             --exclude "data"           \
