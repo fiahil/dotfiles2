@@ -42,11 +42,13 @@ case $1 in
             --exclude ".venv"          \
             --exclude ".mypy_cache"    \
             --exclude ".pytest_cache"  \
+            --exclude ".ruff_cache"    \
             --exclude "__pycache__"    \
             --exclude ".cache"         \
             --exclude "target"         \
             --exclude "data"           \
             --exclude "node_modules"   \
+            --exclude "artefacts"      \
             --files-from "$HOME/dotfiles2/backup-files.txt"
         ;;
     "cleanup")
