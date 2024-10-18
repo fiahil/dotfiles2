@@ -6,5 +6,4 @@ zsh-users/zsh-completions
 belak/zsh-utils path:completion
 
 ohmyzsh/ohmyzsh path:lib
-ohmyzsh/ohmyzsh path:plugins/docker
 ohmyzsh/ohmyzsh path:plugins/command-not-found
