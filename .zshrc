@@ -1,23 +1,5 @@
-
 # load our own completion functions
 fpath=(~/.zsh/completion /usr/local/share/zsh/site-functions $fpath)
-
-# completion; use cache if updated within 24h
-autoload -Uz compinit
-if [[ -n $HOME/.zcompdump(#qN.mh+24) ]]; then
-  compinit -d $HOME/.zcompdump
-else
-  compinit -C
-fi
-
-# disable zsh bundled function mtools command mcd
-# which causes a conflict.
-compdef -d mcd
-
-# load custom executable functions
-for function in ~/.zsh/functions/*; do
-  source $function
-done
 
 # makes color constants available
 autoload -U colors
@@ -110,6 +92,30 @@ bindkey '^[^M' autosuggest-execute
 # iterm2
 [[ -f ~/.iterm2_shell_integration.zsh ]] && source ~/.iterm2_shell_integration.zsh
 
-# Local config
-[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+. "$HOME/.local/bin/env"
 
+# completion: single compinit, after every fpath mutation (antidote plugins,
+# ~/.zfunc). Full rebuild only if the dump is older than 24h, else use cache.
+# NB: zsh does not glob inside [[ ]] — collect matches in an array instead.
+fpath+=~/.zfunc
+autoload -Uz compinit
+_stale_dump=(~/.zcompdump(N.mh+24))
+if (( $#_stale_dump )); then
+  compinit -d ~/.zcompdump
+else
+  compinit -C -d ~/.zcompdump
+fi
+unset _stale_dump
+
+# disable zsh bundled function mtools command mcd
+# which causes a conflict.
+compdef -d mcd
+
+# load custom executable functions (g, jcurl call compdef)
+for function in ~/.zsh/functions/*; do
+  source $function
+done
+
+# Local config: machine-specific tool paths (deno, bun, pnpm, …).
+# Sourced last so it can register completions via compdef.
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local

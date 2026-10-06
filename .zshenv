@@ -11,30 +11,11 @@ export EDITOR=$VISUAL
 export PAGER=less
 export LESS="-iMRSex4 -FX"
 
-# Paths
-export PATH="/usr/local/bin:$PATH"
-export PATH="/usr/local/sbin:$PATH"
-export PATH="/usr/local/go/bin:$PATH"
-export PATH="/usr/local/git/bin:$PATH"
-export PATH="$HOME/.poetry/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="$HOME/bin:$PATH"
-export PATH="$HOME/go/bin:$PATH"
-export PATH="/opt/homebrew/opt/python@3.8/bin:$PATH"
-export PATH="/opt/homebrew/opt/python@3.9/bin:$PATH"
-export PATH="/opt/homebrew/opt/python@3.10/bin:$PATH"
-
-# Mac-specific exports
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    export PATH="/Applications/Postgres.app/Contents/Versions/13/bin:$PATH"
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-    export GOROOT="$(brew --prefix golang)/libexec"
-else
-    export GOROOT="/usr/local/opt/go/libexec"
-fi
-
-export GOPATH="$HOME/go"
-export GOBIN="$GOPATH/bin"
+# Keep PATH/FPATH/MANPATH free of duplicates (nested shells re-run rc files
+# and would re-prepend). Both scalar and tied array need the flag: -U only
+# takes effect on assignment to the flagged name.
+typeset -U PATH path FPATH fpath MANPATH manpath
+# PATH entries themselves: ~/.zprofile (after macOS path_helper) and ~/.zshrc.
 
 # Local config
 [[ -f ~/.zshenv.local ]] && source ~/.zshenv.local
