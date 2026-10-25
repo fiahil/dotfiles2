@@ -32,8 +32,8 @@ setopt extendedglob
 # Allow [ or ] whereever you want
 unsetopt nomatch
 
-# give us access to ^Q
-stty -ixon
+# give us access to ^Q (only when stdin is a terminal)
+[[ -t 0 ]] && stty -ixon
 
 # vi mode
 bindkey -v
@@ -92,7 +92,8 @@ bindkey '^[^M' autosuggest-execute
 # iterm2
 [[ -f ~/.iterm2_shell_integration.zsh ]] && source ~/.iterm2_shell_integration.zsh
 
-. "$HOME/.local/bin/env"
+# uv/cargo installer env script (absent on hosts without those installs)
+[[ -f ~/.local/bin/env ]] && . ~/.local/bin/env
 
 # completion: single compinit, after every fpath mutation (antidote plugins,
 # ~/.zfunc). Full rebuild only if the dump is older than 24h, else use cache.
