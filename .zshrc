@@ -1,5 +1,11 @@
-# load our own completion functions
-fpath=(~/.zsh/completion /usr/local/share/zsh/site-functions $fpath)
+# load our own completion functions, then Homebrew's. Apple's /bin/zsh doesn't
+# search the Apple Silicon prefix on its own; (N) drops dirs absent on this host.
+fpath=(
+  ~/.zsh/completion
+  ${HOMEBREW_PREFIX:-/opt/homebrew}/share/zsh/site-functions(N)
+  /usr/local/share/zsh/site-functions(N)
+  $fpath
+)
 
 # makes color constants available
 autoload -U colors
@@ -35,18 +41,9 @@ unsetopt nomatch
 # give us access to ^Q (only when stdin is a terminal)
 [[ -t 0 ]] && stty -ixon
 
-# vi mode
-bindkey -v
-bindkey "^F" vi-cmd-mode
-
-# handy keybindings
-bindkey "^A" beginning-of-line
-bindkey "^E" end-of-line
-bindkey "^K" kill-line
-bindkey "^R" history-incremental-search-backward
-bindkey "^P" history-search-backward
-bindkey "^Y" accept-and-hold
-bindkey "^N" insert-last-word
+# emacs keybindings (ohmyzsh lib/key-bindings.zsh also sets this and adds its
+# own defaults; custom bindings must go after `antidote load` to stick)
+bindkey -e
 
 # This speeds up pasting w/ autosuggest
 # https://github.com/zsh-users/zsh-autosuggestions/issues/238
@@ -59,15 +56,19 @@ pastefinish() {
   zle -N self-insert $OLD_SELF_INSERT
 }
 
-install_starship() {
-  sh -c "$(curl -fsSL https://starship.rs/install.sh)"
-  eval "$(starship init zsh)"
-}
-
 zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
 
-type starship > /dev/null && eval "$(starship init zsh)" || install_starship
+if (( $+commands[starship] )); then
+  eval "$(starship init zsh)"
+else
+  print -u2 "starship not installed: brew install starship"
+fi
+
+# Plugins may call compdef while loading, before compinit runs further down:
+# queue those calls; they are replayed right after compinit.
+typeset -ga _compdef_queue
+compdef() { _compdef_queue+=("${(j: :)${(@q)@}}") }
 
 # antidote
 source "$HOME/bin/antidote/antidote.zsh"
@@ -83,14 +84,8 @@ bindkey '^[OB' history-substring-search-down
 bindkey '^[^[' autosuggest-accept
 bindkey '^[^M' autosuggest-execute
 
-# dircolors
-[[ -f ~/.dircolors ]] && eval `dircolors ~/.dircolors`
-
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
-
-# iterm2
-[[ -f ~/.iterm2_shell_integration.zsh ]] && source ~/.iterm2_shell_integration.zsh
 
 # uv/cargo installer env script (absent on hosts without those installs)
 [[ -f ~/.local/bin/env ]] && . ~/.local/bin/env
@@ -107,6 +102,10 @@ else
   compinit -C -d ~/.zcompdump
 fi
 unset _stale_dump
+
+# replay compdef calls queued before compinit defined the real compdef
+for _c in $_compdef_queue; do eval "compdef $_c"; done
+unset _compdef_queue _c
 
 # disable zsh bundled function mtools command mcd
 # which causes a conflict.

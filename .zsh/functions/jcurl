@@ -1,5 +1,6 @@
+# curl with verbose request/response headers (stderr) and a pretty, colored JSON body
 function jcurl() {
-    curl -sv "$@" | json -o json-4 | pygmentize -l json
+    curl -sv "$@" | jq .
 }
 
 compdef jcurl=curl
